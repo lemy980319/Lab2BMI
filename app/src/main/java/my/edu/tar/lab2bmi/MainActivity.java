@@ -22,19 +22,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculateBMI(View view){
-        int weight,height;
+        double weight,height;
         double BMI;
         if(TextUtils.isEmpty(weightInput.getText())){
             weightInput.setError("Please enter your weight(kg)");
             return;
         }else if(TextUtils.isEmpty(heightInput.getText())){
             heightInput.setError("Please enter your height(cm)");
+            return;
         }
 
         weight = Integer.parseInt(weightInput.getText().toString());
         height = Integer.parseInt(heightInput.getText().toString());
 
-        BMI = weight/(height/100*(height/100));
+        BMI = weight/((height/100)*(height/100));
 
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra(TAG_MESSAGE, BMI);
@@ -43,3 +44,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
